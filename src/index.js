@@ -1,15 +1,42 @@
 import dotenv from "dotenv"
-const express = require('express')
+import express from "express"
 const app = express();
 const port = 4000
 import mongoose from "mongoose"
-import connectDB from "./db/db.db";
+import connectDB from "./db/dbDb.js";
+
 dotenv.config({
-    path: './env'
+    path: './.env'
 })// neet to make change in package.json in script not changed yet
 
- connectDB()
- .then(()=>{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ connectDB().then(()=>{
 
     app.on("error",(error)=>{
         console.log("ERRR: ", error);
