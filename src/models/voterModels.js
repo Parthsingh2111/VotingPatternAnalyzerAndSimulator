@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+const voterSchema = new mongoose.Schema({
  
     fullName:{
         type: String,
@@ -24,7 +24,6 @@ const userSchema = new mongoose.Schema({
     VoterIdProof:{
         type : String,
         required: true,
-        unique: true,
    },
 
     seat:{
@@ -57,4 +56,4 @@ const userSchema = new mongoose.Schema({
 
 })
 
-export const User  = mongoose.model("User", userSchema);
+export const Voter  = mongoose.model("Voter", voterSchema);
