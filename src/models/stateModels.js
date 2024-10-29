@@ -1,58 +1,55 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-const districtSchema = new  mongoose.Schema({
-    name: {
-         type: String, 
-         required: true,
-         unique: true,
-    },
+const districtSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 
-    // totalPopulation:{
-    //     type: Number, 
-    //     required: true,
-    // },
+  // totalPopulation:{
+  //     type: Number,
+  //     required: true,
+  // },
 
-    // generalCategoryPopulation:{
-    //     type: Number,
-    //     required: true,
-    // },
+  // generalCategoryPopulation:{
+  //     type: Number,
+  //     required: true,
+  // },
 
-    // obcCategoryPopulation:{
-    //     type: Number,
-    //     required: true,
-    // },
+  // obcCategoryPopulation:{
+  //     type: Number,
+  //     required: true,
+  // },
 
-    // scstCategoryPopulation:{
-    //     type: Number,
-    //     required: true,
-    // },
+  // scstCategoryPopulation:{
+  //     type: Number,
+  //     required: true,
+  // },
 
-    // minorityCategoryPopulation:{
-    //     type: Number,
-    //     required: true,
-    // },
+  // minorityCategoryPopulation:{
+  //     type: Number,
+  //     required: true,
+  // },
 });
 
-const regionSchema= new mongoose.Schema({
-    name:{
+const regionSchema = new mongoose.Schema({
+  name: {
     type: string,
-    enum: ['North', 'South', 'East','West'],
+    enum: ["North", "South", "East", "West"],
     required: true,
-    },
-    districts:[districtSchema],
-})
+  },
+  districts: [districtSchema],
+});
 
-const stateSchema= new mongoose.Schema({
-    name: { 
-        type: String,
-         required: true,
-         unique: true,
-    },
+const stateSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 
-    regions:[regionSchema],
+  regions: [regionSchema],
+});
 
-}
-
-);
-
-export const State = mongoose.model("State",stateSchema);
+export const State = mongoose.model("State", stateSchema);

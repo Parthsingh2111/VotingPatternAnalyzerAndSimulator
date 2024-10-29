@@ -1,123 +1,105 @@
-// const Voter = require('../models/voterModels.js');
-// import Voter from '../models/voterModels.js';
-// import Voter from './models/voterModels.js';
+import { Voter } from "../models/voterModels.js";
 
-import { Voter } from '../models/voterModels.js';
+const getVoters = async (req, res) => {
+  try {
+    const voters = await Voter.find({});
+    res.status(200).json(voters);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-
-
-
-const getVoters = async (req,res)=>{
-    try {
-      const  voters = await Voter.find({});
-      res.status(200).json(voters);
-    } catch (error) {
-        res.status(500).json({message: error.message});
+const getVoterById = async (req, res) => {
+  console.log(req.body);
+  try {
+    const { id } = req.params;
+    const voter = await Voter.findByIdAndUpdate(id);
+    if (!voter) {
+      return res.status(404).json({ message: "voter not found" });
     }
-
-}
-
-
-
-const getVoterById = async (req,res)=>{
-    console.log(req.body);
-   try {
-       const { id } = req.params;
-       const voter = await Voter.findByIdAndUpdate(id);
-      if(!voter){
-       return res.status(404).json({message: "voter not found"});
-      }
-      res.status(200).json(voter);
-   } catch (error) {
-       res.status(500).json({message: error.message});
-   }
-}
-
-
+    res.status(200).json(voter);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 const getVoterByVoterId = async (req, res) => {
-    try {
-        const voterId = Number(req.params.voterId);
-      
-        if (isNaN(voterId)) {
-            return res.status(400).json({ message: "Invalid voter ID format" });
-        }
-        
-        const voter = await Voter.findOne({ voterId: voterId });
-        if (!voter) {
-            return res.status(404).json({ message: "Voter not found" });
-        }
-        
-        res.status(200).json(voter);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
+  try {
+    const voterId = Number(req.params.voterId);
 
-
-
-
-const postVoter = async (req,res)=>{
-    console.log('Request Body:', req.body)
-    try {
-      const voters = await Voter.create(req.body);
-      res.status(200).json(voters);
-    } catch (error) {
-      res.status(500).json({message: error.message});
-    }
-}
-
-
-
-
-const updateVoterById = async(req,res)=>{
-     
-    try {
-        const {id} = req.params;
-        const voter = await Voter.findByIdAndUpdate(id, req.body, { new: true });
-       if(!voter){
-          res.status(404).json({message: "Voter not found"});
-       }
-          res.status(200).json(voter);
-
-    } catch (error) {
-        res.status(200).json({message: error.message});
+    if (isNaN(voterId)) {
+      return res.status(400).json({ message: "Invalid voter ID format" });
     }
 
-}
-
-
-
-
-const updateVoterByVoterId= async (req,res)=>{
-    
-    try {
-       //  const {id} = req.params
-        const voterId = Number(req.params.voterId);
-        const voter = await Voter.findOne({ voterId: voterId}, req.body, { new: true });
-        if(!voter){
-           res.status(404).json({message:"Voter not found"});
-        }
-          res.status(200).json(voter);
-    } catch (error) {
-       res.status(500).json({message: error.message});
-    }
-}
-
-const deleteVoterById = async(req,res)=>{
-     
-    try {
-        const {id} = req.params;
-        const voter = await Voter.findByIdAndDelete(id);
-       if(!voter){
-          res.status(404).json({message: "Voter not found"});
-       }
-          res.status(200).json({message: "Voter deleted successfully"});
-
-    } catch (error) {
-        res.status(200).json({message: error.message});
+    const voter = await Voter.findOne({ voterId: voterId });
+    if (!voter) {
+      return res.status(404).json({ message: "Voter not found" });
     }
 
-}
+    res.status(200).json(voter);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-export{deleteVoterById,updateVoterByVoterId,updateVoterById,postVoter,getVoterByVoterId,getVoterById,getVoters};
+const postVoter = async (req, res) => {
+  console.log("Request Body:", req.body);
+  try {
+    const voters = await Voter.create(req.body);
+    res.status(200).json(voters);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const updateVoterById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const voter = await Voter.findByIdAndUpdate(id, req.body, { new: true });
+    if (!voter) {
+      res.status(404).json({ message: "Voter not found" });
+    }
+    res.status(200).json(voter);
+  } catch (error) {
+    res.status(200).json({ message: error.message });
+  }
+};
+
+const updateVoterByVoterId = async (req, res) => {
+  try {
+    //  const {id} = req.params
+    const voterId = Number(req.params.voterId);
+    const voter = await Voter.findOne({ voterId: voterId }, req.body, {
+      new: true,
+    });
+    if (!voter) {
+      res.status(404).json({ message: "Voter not found" });
+    }
+    res.status(200).json(voter);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const deleteVoterById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const voter = await Voter.findByIdAndDelete(id);
+    if (!voter) {
+      res.status(404).json({ message: "Voter not found" });
+    }
+    res.status(200).json({ message: "Voter deleted successfully" });
+  } catch (error) {
+    res.status(200).json({ message: error.message });
+  }
+};
+
+export {
+  deleteVoterById,
+  updateVoterByVoterId,
+  updateVoterById,
+  postVoter,
+  getVoterByVoterId,
+  getVoterById,
+  getVoters,
+};
