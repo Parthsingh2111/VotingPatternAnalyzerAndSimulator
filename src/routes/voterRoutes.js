@@ -7,7 +7,9 @@ import {
   getVoterByVoterId,
   getVoterById,
   getVoters,
+  postManyVoter
 } from "../controllers/voterController.js";
+
 const router = express.Router();
 // GET all voter
 router.get("/get/", getVoters);
@@ -21,6 +23,8 @@ router.get("/get/byVoterId/:voterId", getVoterByVoterId);
 
 // POST a new voter
 router.post("/post/", postVoter);
+
+router.post("/post/postMany/", postVoter);
 
 // PUT to update a voter by ID
 

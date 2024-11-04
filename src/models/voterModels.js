@@ -18,18 +18,20 @@ const voterSchema = new mongoose.Schema({
     unique: true,
   },
 
-  VoterIdProof: {
+  voterIdProof: {
     type: String,
     required: true,
   },
 
   seat: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "District",
     required: true,
   },
 
   category: {
     type: String,
+    enum: ["general", "obc", "scst", "minority"],
     required: true,
   },
 
@@ -38,7 +40,7 @@ const voterSchema = new mongoose.Schema({
     required: true,
   },
 
-  DOB: {
+  dateOfBirth: {
     type: Date,
     required: true,
   },
@@ -48,6 +50,30 @@ const voterSchema = new mongoose.Schema({
     default: false,
     required: true,
   },
-});
+
+  partyVoting: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Party",
+    required : true,
+  },
+
+  happyAbout:{
+    type: String,
+    enum:["Performance","Social Harmony","Economic Polices","Candidate","Development","Global Impact","Top Leadership"],
+    required : true,
+  },
+
+  unhappyAbout:{
+    type: String,
+    enum:["Performance","Social Harmony","Economic Polices","Candidate","Development","Global Impact","Top Leadership","correption"],
+    required : true,
+  },
+},
+{
+  timestamps: true
+}
+
+
+);
 
 export const Voter = mongoose.model("Voter", voterSchema);

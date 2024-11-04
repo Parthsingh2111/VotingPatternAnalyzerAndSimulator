@@ -4,6 +4,7 @@ const partySchema= new mongoose.Schema({
      
     name:{
         type: String,
+        enum:["BJP","INC","APP","OTHER"],
         required: true,
         unique: true,
     },
@@ -13,7 +14,7 @@ const partySchema= new mongoose.Schema({
         required: true,
         unique: true,
     }
-})
+});
 
 
 export const Party = mongoose.model("Party", partySchema);

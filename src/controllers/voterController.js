@@ -13,7 +13,7 @@ const getVoterById = async (req, res) => {
   console.log(req.body);
   try {
     const { id } = req.params;
-    const voter = await Voter.findByIdAndUpdate(id);
+    const voter = await Voter.findById(id);
     if (!voter) {
       return res.status(404).json({ message: "voter not found" });
     }
@@ -46,6 +46,22 @@ const postVoter = async (req, res) => {
   console.log("Request Body:", req.body);
   try {
     const voters = await Voter.create(req.body);
+    res.status(200).json(voters);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const postManyVoter = async (req, res) => {
+  console.log("Request Body:", req.body);
+  try {
+    // Ensure that req.body is an array
+    if (!Array.isArray(req.body)) {
+      return res.status(400).json({ message: "Invalid input format. Expected an array of voters." });
+    }
+
+    // Create voters in bulk
+    const voters = await Voter.insertMany(req.body);
     res.status(200).json(voters);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -94,12 +110,15 @@ const deleteVoterById = async (req, res) => {
   }
 };
 
+
+
 export {
   deleteVoterById,
   updateVoterByVoterId,
-  updateVoterById,
+  updateVoterById,  
   postVoter,
   getVoterByVoterId,
   getVoterById,
   getVoters,
+  postManyVoter,
 };
