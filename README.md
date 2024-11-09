@@ -35,7 +35,7 @@ The **Voting Simulation and Pattern Analysis** project is a backend-focused data
 ![Voting Patterns Dashboard 2](https://github.com/Parthsingh2111/VotingPatternAnalyzerAndSimulator/blob/main/dashboard2%20political%20geography.png)
 *Voting Patterns Dashboard*: A sample view of political geography.
 
-![Demographic Insights](path/to/demographic_insights.png)
+![Voting Patterns Dashboard 3](https://github.com/Parthsingh2111/VotingPatternAnalyzerAndSimulator/blob/main/dashboard%203%20voter%20data.png)
 *Demographic Insights*: Visualization showing voter demographics and insights.
 
 ## Usage
