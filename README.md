@@ -29,8 +29,8 @@ The **Voting Simulation and Pattern Analysis** project is a backend-focused data
 > Metabase does not allow free hosting of this project. Due to the high hosting costs, the project has not been hosted publicly. Instead, I am providing images of the project interface and key dashboard features below.
 
 ## Project Images
-![Voting Patterns Dashboard 1](path/to/voting_patterns_dashboard.png)
-*Voting Patterns Dashboard*: A sample view of how voting patterns are visualized across political geographies and voter demographics.
+![Voting Patterns Dashboard 1](https://github.com/Parthsingh2111/VotingPatternAnalyzerAndSimulator/blob/main/dashboard1.png)
+*Voting Patterns Dashboard*: A sample view of candidate and parties.
 
 ![Bug Analytics Dashboard](path/to/bug_analytics_dashboard.png)
 *Bug Analytics Dashboard*: A view of the bug-tracking dashboard used to improve query accuracy and troubleshoot issues.
