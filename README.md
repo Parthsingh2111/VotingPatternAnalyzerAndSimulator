@@ -38,6 +38,9 @@ The **Voting Simulation and Pattern Analysis** project is a backend-focused data
 ![Voting Patterns Dashboard 3](https://github.com/Parthsingh2111/VotingPatternAnalyzerAndSimulator/blob/main/dashboard%203%20voter%20data.png)
 *Demographic Insights*: Visualization showing voter demographics and insights.
 
+![Voting Patterns Dashboard 4](https://github.com/Parthsingh2111/VotingPatternAnalyzerAndSimulator/blob/main/dashboard%203%20voter%20data.png)
+*Demographic Insights*: Visualization of voting similation.
+
 ## Usage
 - **Political Analysis**: Analyze voting patterns across districts and demographics.
 - **Real-Time Querying**: Run complex aggregation queries to obtain immediate insights into voter behavior.
